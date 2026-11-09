@@ -1,26 +1,39 @@
 # Fluent Lab
 
-A standalone English writing practice app designed for a short live demonstration. Open `index.html` in a modern browser; no installation, build step, server, account, or API key is required.
+A writing and speaking practice studio built with a browser interface, Go HTTP server, and Rust analysis engine.
 
-## What it does
+## Quick demo
 
-- Six discussion prompts across study, technology, learning, and decisions.
-- Live word count and automatic draft saving.
-- Rule-based writing notes: sentence length, word variety, repetition, and vague wording.
-- Local practice archive, text export, example response, contrast mode, responsive layout, keyboard focus styles, and reduced-motion support.
+Open `index.html` directly in a browser. The studio, prompt library, live feedback, speech playback, focus mode, and draft comparison work without setup. The browser does not save responses.
 
-Analysis is deliberately transparent and does **not** claim to grade English proficiency or correct grammar. Browser storage is local to the current browser and device.
+## Full stack run
 
-## Three-minute demo
+Requires Go 1.22+ and Rust/Cargo.
 
-1. Explain the study-and-work prompt in English and write a short answer.
-2. Click **Explore my writing** and discuss one suggestion critically.
-3. Save the response, open **My practice**, then show another prompt and dark mode.
+```sh
+cd analyzer && cargo build --release && cd ..
+go run ./cmd/server
+```
 
-## Suggested introduction
+Open `http://localhost:8080`. The Go API passes draft text to the Rust CLI and returns validated JSON. The browser uses this endpoint when available and otherwise keeps its built-in analysis.
 
-“I built Fluent Lab to make language practice more reflective. It helps a learner notice sentence structure, repetition, and vague expressions. The analysis is rule based, so the learner makes the final decision. I designed it to run offline and keep writing private.”
+## Features
 
-## Stack
+- Six discussion prompts with a topic filter and focused writing angles.
+- Live word, character, sentence, variety, reading-time, and sentence-pace indicators.
+- Rule-based revision checklist and precision-word suggestions.
+- Browser speech playback, session timer, focus mode, copy, and side-by-side draft comparison.
+- Go API with body-size and execution-time limits, content-type validation, and security headers.
+- Rust analyzer with deterministic output and unit tests.
 
-Plain HTML, CSS, and JavaScript. Google Fonts enhance the design when online; local fallback fonts work offline.
+The analysis offers writing cues. It does not claim to grade proficiency or correct grammar.
+
+## Verify
+
+```sh
+node --check app.js
+go test ./...
+cd analyzer && cargo test
+```
+
+GitHub Actions runs these checks on every push and pull request.
