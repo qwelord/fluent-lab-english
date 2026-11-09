@@ -7,7 +7,7 @@ A standalone English writing practice app designed for a short live demonstratio
 - Six discussion prompts across study, technology, learning, and decisions.
 - Live word count and automatic draft saving.
 - Rule-based writing notes: sentence length, word variety, repetition, and vague wording.
-- Local practice archive, example response, dark mode, responsive layout, keyboard focus styles, and reduced-motion support.
+- Local practice archive, text export, example response, contrast mode, responsive layout, keyboard focus styles, and reduced-motion support.
 
 Analysis is deliberately transparent and does **not** claim to grade English proficiency or correct grammar. Browser storage is local to the current browser and device.
 
